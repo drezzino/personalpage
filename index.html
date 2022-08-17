@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html hreflang="it">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Andrea's page</title>
+<meta name="description" content="#" />
+
+<meta name="author" content="Chef Studio" />
+<link rel="shortcut icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0">
+<style>
+
+body { background-color: #B2C8DF; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+
+}
+
+input:focus, button:focus {outline:0;}
+
+img {
+    vertical-align: middle;
+}
+
+a{
+	text-decoration:none;
+}
+
+ul li{
+	list-style:none;
+}
+
+html,body{
+	font-family: 'Roboto Slab', serif;
+	color:#666 /*color-text*/;
+	height:100%;
+	width:100%;
+}
+
+h1{
+	font-size: 2em;
+	text-align:left;
+	font-weight: bold;
+	color:#F77E21/* primary color*/;
+}
+
+/* -----------------contenitore e contenuto ------------------ */
+
+.contenitore .contenuto{
+	max-width:1200px;
+	margin:auto;
+	padding: 70px 10px;
+}
+
+.contenitore .contenuto a{
+  background-color: #B2C8DF;
+	color:#F77E21/* primary color*/;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.contenitore .contenuto a:hover{
+  background-color: #B2C8DF;
+	color:#F77E21/* primary lightcolor*/;
+}
+
+h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #F77E21
+}
+
+/* -----------------Menu nella versione mobile-----------------*/
+
+.active{
+	color:#FFFFFF/* primary super-lightcolor*/;
+	background-color: #fbfafa/* primary lightcolor*/;
+}
+
+.active-dropdown{
+	color:#FFFFFF /* primary super-lightcolor*/;
+	background-color:#fbfafa/* primary lightcolor*/;
+}
+
+nav{
+	height:100%;
+	background-color:#F77E21;/* primary lightcolor* /* sfondo menu mobile*/
+	position:fixed;
+	width:100%;
+	margin-top:54px;
+	visibility:hidden;
+	overflow:auto;/* permette lo scroll quando il menu è aperto*/
+
+}
+
+nav ul{
+	padding-bottom:54px;
+}
+
+nav ul li a {
+	padding: 16px 0 16px 32px;
+	display:block;
+	color:#fbfafa;
+	font-size:16px;
+	transition: background-color 0.3s ease;
+}
+
+.submenu{
+	color:#fbfafa /* primary super-lightcolor*/;
+	padding-left: 55px;
+	padding-bottom: 5px;
+}
+
+nav ul li ul {
+	padding-left:0;
+	padding-bottom:0;
+}
+
+nav ul li ul li a {
+	font-size:16px;
+	padding:10px 0 10px 55px;
+	border:hidden;
+}
+
+.lingua{
+	border-top: 1px solid #B3453E/* primary lightcolor*/;
+}
+
+.lingua > a::before{
+	content: url(img/earth-globe.svg);
+	margin-right: 5px;
+}
+
+/* ----------------- div bar per l'attivazione del menu ------------------ */
+
+#bar{
+	background-color: #F77E21 /* primary color*/;
+	height:54px;
+	width:100%;
+	z-index:2;
+	position:fixed;
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.4);
+}
+
+#bar #logo{
+	float:right;
+	margin-right:12px;
+}
+
+/* ----------------- Hamburger animation ------------------ */
+
+#hamburger {
+  display: none;
+}
+
+.menuicon {
+ 	position:fixed;
+	height:54px;
+	width:54px;
+	margin-left:5px;
+	z-index:3;
+}
+
+.menuicon  span {
+    display: block;
+    top: 25px;
+    width: 40px;
+    height:3px;
+    left:8px;
+    background-color: #fff;
+    position: relative;
+	border-radius:20px;
+    transition-duration: 0;
+    transition-delay: .1s;
+}
+
+.menuicon  span::after, .menuicon  span::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 40px;
+    height:3px;
+    background-color: #fff;
+	border-radius:20px;
+    transition-duration: .1s;
+	-webkit-transition-delay: .1s, 0;
+    transition-delay: .1s, 0;
+}
+.menuicon  span::before {
+      margin-top: -10px;
+}
+.menuicon  span::after {
+      margin-top: 10px;
+}
+
+#hamburger:checked ~ .menuicon span{
+    background-color: rgba(0,0,0,0);
+}
+
+#hamburger:checked ~ .menuicon span::before {
+      margin-top: 0px;
+      -webkit-transition-delay: 0, .3s;
+      -moz-transition-delay: 0, .3s;
+      -ms-transition-delay: 0,.3s;
+      -o-transition-delay: 0, .3s;
+      transition-delay: 0, .3s;
+}
+
+#hamburger:checked ~ .menuicon span::after {
+      margin-top: 0px;
+      -webkit-transition-delay: 0, .3s;
+      -moz-transition-delay: 0, .3s;
+      -ms-transition-delay: 0,.3s;
+      -o-transition-delay: 0, .3s;
+      transition-delay: 0, .3s;
+}
+
+#hamburger:checked ~ .menuicon span::before {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+}
+
+#hamburger:checked ~ .menuicon span::after {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+}
+
+/* ----------------- menu animation faccio apparire il menu ------------------ */
+
+#hamburger:checked ~ .menu-visibility {
+	visibility:visible;
+}
+
+/* -----------------media per menu orizzontale ------------------ */
+
+@media screen and (min-width: 980px){
+
+.menuicon{
+	display:none; /* togliere icona hambuger icon */
+}
+
+#bar #logo{
+	float:left;
+	margin-left:12px;
+}
+
+nav{
+	z-index:3;
+	margin-top:19px;
+	height:auto;
+	background-color:transparent;
+	transition:none;
+	width:auto;
+	float:right;
+	right:12px;
+	visibility:visible;
+	font-family:'Roboto Slab', serif;
+	overflow:inherit;
+}
+
+.active{
+	background-color:transparent;
+	color:#fbfafa /* primary super-lightcolor*/;
+}
+
+.active-dropdown{
+	color:#fff;
+	background-color:#B3453E/* primary lightcolor*/;
+}
+
+nav ul{
+	padding:0;
+}
+
+nav ul li a {
+	padding:0;
+	display:inline;
+	font-size:16px;
+	color: #fff;
+}
+
+nav ul li a:hover {
+	background-color:transparent;
+	color:#F77E21/* primary super-lightcolor*/;
+}
+
+.submenu{
+	padding-left: 0;
+	color:#FFFFFF;
+}
+
+nav ul li {
+	margin:0;
+	float:left;
+	position:relative;
+	padding:0 16px;
+}
+
+.submenu::after{
+	content: url(img/arrow-down.svg);
+	float: right;
+	padding-left: 6px;
+}
+
+/* ----------------- dropdown - attivare il menu a tendina ------------------ */
+
+nav ul li ul {
+	position:fixed;
+	height:0;
+	overflow:hidden;
+	background-color: #F77E21 /* primary color*/
+}
+
+nav ul li:hover ul{
+	height:auto;
+	padding-top: 14px;
+	position: absolute;
+    right: 0;
+}
+
+nav ul li ul li {
+	font-size: 14px;
+	font-weight: normal;
+	float:none;
+	padding:0;
+	min-width: 160px;
+	border-top: 1px solid #F77E21/* primary lightcolor*/;
+}
+
+nav ul li ul li a {
+	padding: 16px 32px;
+	display: block;
+	background-color: #F77E21/* primary color*/;
+	color: #ffffff;
+	font-weight: normal;
+}
+
+nav ul li ul li a:hover {
+	background-color:#FF6759/* primary lightcolor*/;
+	color:#FF6759 /* primary super-lightcolor*/;
+}
+
+.lingua{
+	border-top: 0;
+	border-left: solid 1px #fff;
+	float: left;
+}
+
+}
+
+
+
+</style>
+
+
+<h1>Andrea Vilia</h1>
+
+
+
+</head>
+
+<body>
+<input type="checkbox" id="hamburger"/>
+<label class="menuicon" for="hamburger">
+  <span></span>
+</label>
+
+<div id="bar">
+ 	<div id="text">
+
+	</div> <!--/fine logo-->
+</div><!--/fine bar-->
+
+<nav class="menu-visibility">
+            	<ul>
+                	 <li><a class="active" href="index.html">HOME</a></li>
+
+                     <li><a class="submenu" href="Portfolio.html">PORTFOLIO</a>
+						<ul>
+                    		<li><a href="loghi.html">Logos</a></li>
+					 		<li><a href="images.html"> Graphic Editing </a></li>
+
+						</ul>
+                     </li>
+
+					<li><a href="contacts.html">CONTATTI</a></li>
+
+</nav>
+
+
+<div class="contenitore">
+
+	<div class="contenuto">
+    <table cellspacing='70'>
+        <td> <img src="laureacoriandolismall.png" alt="andrea profile picture"></td>
+        <td>
+
+        <h1> Andrea Vilia </h1>
+          <p><em> <b>Full stack web developer and logo designer </b> </em> </p>
+          <br>
+          <p>Italian full stack web developer, with the passion for web design and content creating.</p>
+          <p> <em>Degree in <b>law</b> at University of Cagliari </em>.</p>
+          <p> <em> I love <b>pizza</b> and <b>sushi</b>, good food and good drinks. Love to <b>travel</b> and discover new cultures
+              and new people. I studied abroad for 6 months, in <b>Danzica</b>, Poland. </em>.</p>
+        </td>
+        <td>
+<img src="logo nuovo1.png" alt="logo" height="250px" width="320px">
+</td>
+      </table>
+
+<br>
+
+<center>
+
+
+      <h3>Education</h3>
+      <br>
+      <ul>
+
+        <li>
+          <p>Scientific High School Michelangelo</p>
+        </li>
+        <li>
+          <p>Univeritet Gdanski Prawa i Administracji</p>
+        </li>
+        <li>
+          <p>Degree in law at University of Cagliari</p>
+        </li>
+        <li>
+          <p><a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">Complete 2022 Web Development BootCamp </a></p>
+        </li>
+        <li>
+          <p><a href="https://www.udemy.com/course/adobe-cc-masterclass-graphic-design-photoshop-illustrator-xd-indesign/">Adobe CC Masterclass: Photoshop, Illustrator, XD & InDesign</a></p>
+        </li>
+
+      </ul>
+      </center>
+      <br>
+      <br>
+      <br>
+      <br>
+<center>
+
+<h3> Work Experience </h3>
+
+      <table cellspacing="30">
+
+              <tr>
+                <td> 2016 </td>
+                <td> Receptionist presso O.a.m.i </td>
+              </tr>
+              <tr>
+                <td> 2017 </td>
+                <td> Receptionist presso O.a.m.i</td>
+              </tr>
+              <tr>
+                <td>2018</td>
+                <td> Receptionist presso O.a.m.i</td>
+              </tr>
+              <tr>
+                <td>2019-2022</td>
+                <td>Social media manager presso O.a.m.i
+                </td>
+              <tr>
+                <td>
+                  2022-
+                </td>
+                <td>
+                  Freelancer
+                </td>
+              </tr>
+        </table>
+
+</center>
+<br>
+<br>
+<center>
+
+
+  <h3> Skills </h3>
+  <br>
+  <table>
+
+  </table>
+  <tr>
+    <td>
+      <table cellspacing="30">
+        <tr>
+          <td>Photografy</td>
+          <td>⭐⭐⭐☆☆</td>
+          <td>Content Creation</td>
+          <td>⭐⭐⭐⭐☆</td>
+          <td> Creativity</td>
+          <td> ⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td> Coding</td>
+          <td>⭐⭐⭐☆☆</td>
+          <td>Logo Design</td>
+          <td>⭐⭐⭐⭐☆</td>
+        </tr>
+      </table>
+    </td>
+    </table>
+
+
+
+
+
+
+
+
+
+
+</center>
+
+
+
+
+
+
+	</div><!-- fine contenuto -->
+
+</div><!-- fine conteitore -->
+
+</body>
+</html>
